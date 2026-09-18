@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Barikz Developer — Alight Motion Premium Generator</title>
+<meta name="theme-color" content="#F3F5F9">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barikz Developer — AM Generator">
+<meta property="og:title" content="Barikz Developer — Alight Motion Premium 1 Tahun">
+<meta property="og:description" content="Aktivasi Alight Motion Premium 1 tahun via Barikz Developer. Proses otomatis & instan. Mulai Rp 3.000!">
+<meta property="og:image" content="https://raw.githubusercontent.com/REY-CEO/REY-CEO/main/Image/1789712904859-image_1789712904764.jpg">
+<meta property="og:url" content="https://am-rey-alight-motion-gamma.vercel.app">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Barikz Developer — Alight Motion Premium 1 Tahun">
+<meta name="twitter:description" content="Aktivasi Alight Motion Premium 1 tahun via Barikz Developer. Mulai Rp 3.000!">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/REY-CEO/REY-CEO/main/Image/1789712904859-image_1789712904764.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader" class="loader">
+  <div class="loader-box floating">
+    <div class="loader-logo"><i class="fas fa-gamepad"></i></div>
+    <div class="loader-title">BARIKZ DEV</div>
+    <div class="loader-sub">Memuat Pengalaman...</div>
+    <div class="loader-bar"><div class="loader-bar-fill"></div></div>
+    <div class="loader-status" id="loaderStatus">Menyiapkan sistem</div>
+  </div>
+</div>
+
+<div id="welcomeToast" class="welcome-toast">
+  <div class="toast-icon"><i class="fas fa-star"></i></div>
+  <div>
+    <div class="welcome-title" id="welcomeTitle">Halo, Selamat Datang!</div>
+    <div class="welcome-desc" id="welcomeDesc">Sistem siap dimainkan.</div>
+  </div>
+</div>
+
+<div class="topbar floating-slow">
+  <div class="topbar-brand">
+    <div class="topbar-logo"><i class="fas fa-gamepad"></i></div>
+    <div>
+      <h1>BARIKZ DEV</h1>
+      <span>AM Generator</span>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="action-btn" onclick="cycleTheme()"><i class="fas fa-paint-roller"></i></button>
+    <a href="https://wa.me/6285196178998" target="_blank" class="action-btn wa"><i class="fab fa-whatsapp"></i></a>
+    <button class="action-btn donate" onclick="openDonate()"><i class="fas fa-gift"></i></button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="hero-bg-shapes"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><i class="fas fa-crown"></i> PREMIUM</div>
+    <h2>Alight Motion <span>1 Tahun</span></h2>
+    <p>
+      Aktifkan akun Alight Motion Premium instan — tanpa ribet, tanpa password.
+      Cukup pakai <b>email + magic link</b>, proses otomatis dalam hitungan detik.
+      Mulai dari <b>Rp 3.000</b>.
+    </p>
+    <div class="hero-features">
+      <span><i class="fas fa-bolt"></i> Instan</span>
+      <span><i class="fas fa-shield-cat"></i> Aman</span>
+      <span><i class="fas fa-unlock-keyhole"></i> Terbuka Semua</span>
+    </div>
+  </div>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" id="tabManual" onclick="switchMode('manual')">
+    <i class="fas fa-envelope-open-text"></i><span>Email Pribadi</span>
+  </button>
+  <button class="tab-btn" id="tabAuto" onclick="switchMode('auto')">
+    <i class="fas fa-wand-magic-sparkles"></i><span>Email Otomatis</span>
+  </button>
+</div>
+
+<!-- PANEL MANUAL -->
+<div class="main-card" id="panelManual">
+
+  <div id="manualBuyState">
+    <div class="card-header">
+      <div class="card-icon"><i class="fas fa-user-astronaut"></i></div>
+      <div>
+        <div class="card-title">Gunakan Email Pribadi</div>
+        <div class="card-sub">Magic link akan dikirim ke Gmail-mu</div>
+      </div>
+    </div>
+
+    <div class="message" id="msgBox"></div>
+
+    <label class="label">Alamat Gmail</label>
+    <input type="email" id="emailInput" class="input" placeholder="kamu@gmail.com" inputmode="email">
+
+    <div class="price-box">
+      <div class="price-row">
+        <span><i class="fas fa-envelope"></i> Metode</span>
+        <b>Email Pribadi</b>
+      </div>
+      <div class="price-row">
+        <span><i class="fas fa-clock"></i> Durasi Aktif</span>
+        <b>1 Tahun</b>
+      </div>
+      <div class="price-row price-total">
+        <span>Total Bayar</span>
+        <b>Rp 3.000</b>
+      </div>
+    </div>
+
+    <button id="sendBtn" class="btn btn-primary btn-3d">
+      <i class="fas fa-cart-shopping"></i> Beli Sekarang Rp 3.000
+    </button>
+
+    <div class="info-note">
+      <i class="fas fa-circle-info"></i>
+      <div>
+        <b>Cara Main:</b> Bayar <b>Rp 3.000</b> via QRIS → magic link dikirim ke Gmail → paste link dalam <b>5 menit</b> → premium aktif 🎉.
+      </div>
+    </div>
+  </div>
+
+  <div id="verifSection" style="display:none;">
+    <div class="paid-success-banner pulse-anim">
+      <div class="psb-icon"><i class="fas fa-check-circle"></i></div>
+      <div>
+        <div class="psb-title">Pembayaran Sukses!</div>
+        <div class="psb-desc">Cek <b id="verifEmailDisplay">email kamu</b> untuk magic link</div>
+      </div>
+    </div>
+
+    <div class="verif-timer" id="verifTimer">
+      <i class="fas fa-hourglass-half"></i>
+      <div>
+        <div class="verif-timer-label">Waktu Verifikasi</div>
+        <div class="verif-timer-value" id="verifCountdown">05:00</div>
+      </div>
+    </div>
+
+    <div class="card-header" style="margin-top:20px;">
+      <div class="card-icon green"><i class="fas fa-paste"></i></div>
+      <div>
+        <div class="card-title">Tempel Magic Link</div>
+        <div class="card-sub">Copy dari Gmail, paste di sini</div>
+      </div>
+    </div>
+
+    <ol class="verif-steps">
+      <li>Buka aplikasi <b>Gmail</b> kamu</li>
+      <li>Cari email masuk dari <b>Alight Motion</b></li>
+      <li><b>Salin (Copy)</b> link di dalam email tersebut</li>
+      <li><b>Tempel (Paste)</b> di kotak di bawah ⬇️</li>
+    </ol>
+
+    <div class="message" id="msgBox2"></div>
+
+    <label class="label">Link dari Email</label>
+    <textarea id="magicInput" class="input" placeholder="Tempel link dari Gmail di sini..." rows="3"></textarea>
+
+    <button id="activateBtn" class="btn btn-dark btn-3d" disabled>
+      <i class="fas fa-shield-halved"></i> <span id="btnText">Verifikasi &amp; Aktifkan</span>
+    </button>
+
+    <a href="https://mail.google.com" target="_blank" class="gmail-btn btn-3d-light">
+      <i class="fab fa-google"></i> Buka Gmail Sekarang
+    </a>
+
+    <button id="verifExpiredBtn" class="btn btn-primary btn-3d" style="display:none;margin-top:12px;">
+      <i class="fas fa-rotate-right"></i> Beli Akun Lagi
+    </button>
+  </div>
+
+  <div id="verifSuccess" class="success-card floating" style="display:none;">
+    <div class="success-icon"><i class="fas fa-crown"></i></div>
+    <div class="success-title">🎉 Yey, Premium Aktif!</div>
+    <div class="success-desc">
+      Akun <b id="vsEmail">-</b> sudah berhasil jadi <b>Alight Motion Premium</b>.
+      Buka aplikasi &amp; login pakai email tersebut.
+    </div>
+    <button class="btn btn-primary btn-3d" onclick="resetVerifForm()" style="margin-bottom:0;">
+      <i class="fas fa-cart-plus"></i> Beli Akun Lagi
+    </button>
+  </div>
+</div>
+
+<!-- PANEL AUTO -->
+<div class="main-card" id="panelAuto" style="display:none;">
+  <div class="card-header">
+    <div class="card-icon"><i class="fas fa-robot"></i></div>
+    <div>
+      <div class="card-title">Sistem Otomatis</div>
+      <div class="card-sub">Kami yang buatkan akun untukmu</div>
+    </div>
+  </div>
+
+  <div class="message" id="msgBoxPaid"></div>
+
+  <label class="label">Jumlah Akun (1 – 20)</label>
+  <div class="qty-control">
+    <button class="qty-btn" onclick="changePaidQty(-1)">−</button>
+    <input type="number" id="paidCount" class="qty-input" value="1" min="1" max="20" inputmode="numeric">
+    <button class="qty-btn" onclick="changePaidQty(1)">+</button>
+  </div>
+
+  <label class="label">Domain Email</label>
+  <select id="paidDomainSelect" class="input">
+    <option value="gmail.com">gmail.com</option>
+    <option value="googlemail.com">googlemail.com</option>
+  </select>
+
+  <div class="price-box">
+    <div class="price-row">
+      <span><i class="fas fa-tag"></i> Harga per akun</span>
+      <b>Rp 5.000</b>
+    </div>
+    <div class="price-row">
+      <span><i class="fas fa-hashtag"></i> Jumlah</span>
+      <b id="paidQtyDisplay">1</b>
+    </div>
+    <div class="price-row price-total">
+      <span>Total Bayar</span>
+      <b id="paidTotalDisplay">Rp 5.000</b>
+    </div>
+  </div>
+
+  <button id="paidPayBtn" class="btn btn-primary btn-3d">
+    <i class="fas fa-cart-shopping"></i> Beli <span id="paidBtnQty">1</span> Akun
+  </button>
+
+  <div class="info-note">
+    <i class="fas fa-circle-info"></i>
+    <div>
+      <b>Cara Main:</b> Bayar via QRIS → sistem memproses → akun langsung siap dipakai.
+    </div>
+  </div>
+
+  <div id="paidProgress" style="display:none;margin-top:24px;padding-top:24px;border-top:2px dashed var(--soft);">
+    <div class="section-title">HASIL AKUN</div>
+    <div class="summary" id="paidSummary">Menunggu pembayaran...</div>
+    <div id="paidList"></div>
+    <div id="paidActions" class="actions-row">
+      <button class="btn btn-light btn-3d-light" onclick="copyAllPaidEmails()"><i class="fas fa-copy"></i> Salin Semua</button>
+      <button class="btn btn-dark btn-3d" onclick="downloadPaidTxt()"><i class="fas fa-download"></i> Simpan TXT</button>
+    </div>
+  </div>
+</div>
+
+<div class="terminal">
+  <div class="term-head">
+    <span class="term-title"><i class="fas fa-list-check"></i> Aktivitas Sistem</span>
+    <div class="term-actions">
+      <button class="term-btn" onclick="copyTerminal()"><i class="fas fa-copy"></i></button>
+      <button class="term-btn" onclick="clearTerminal()"><i class="fas fa-trash-can"></i></button>
+      <span class="term-live"><span class="live-dot"></span>Online</span>
+    </div>
+  </div>
+  <div id="terminalLog">
+    <div class="log-line log-info">Halo! Barikz Developer siap membantumu.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">BARIKZ DEV</div>
+  <div class="footer-sub">Dibuat dengan <i class="fas fa-heart pulse-anim"></i> penuh keceriaan</div>
+</div>
+
+<!-- MODAL KONFIRMASI -->
+<div class="modal-backdrop" id="confirmModal" onclick="if(event.target===this) closeConfirmModal()">
+  <div class="modal-box confirm-box bounce-in">
+    <button class="modal-close" onclick="closeConfirmModal()"><i class="fas fa-xmark"></i></button>
+    <div class="confirm-icon floating"><i class="fas fa-bag-shopping"></i></div>
+    <div class="confirm-title">Cek Pesananmu</div>
+    <div class="confirm-sub">Pastikan semuanya sudah benar ya!</div>
+    <div class="confirm-detail">
+      <div class="confirm-row">
+        <span><i class="fas fa-box-open"></i> Produk</span>
+        <b>AM Premium</b>
+      </div>
+      <div class="confirm-row">
+        <span><i class="fas fa-hashtag"></i> Jumlah</span>
+        <b id="confirmQty">1 akun</b>
+      </div>
+      <div class="confirm-row confirm-total">
+        <span>Total Bayar</span>
+        <b id="confirmTotal">Rp 3.000</b>
+      </div>
+    </div>
+    <div class="confirm-note">
+      <i class="fas fa-clock"></i>
+      <span>QRIS aktif selama <b>15 menit</b>. Jangan sampai kehabisan waktu!</span>
+    </div>
+    <div class="confirm-actions">
+      <button class="btn btn-light btn-3d-light" onclick="closeConfirmModal()">Nanti Dulu</button>
+      <button class="btn btn-primary btn-3d" id="confirmPayBtn"><i class="fas fa-check"></i> Gas Bayar!</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL QRIS -->
+<div class="modal-backdrop" id="payModal" onclick="if(event.target===this) closePayModal()">
+  <div class="modal-box pay-box bounce-in">
+    <button class="modal-close" onclick="closePayModal()"><i class="fas fa-xmark"></i></button>
+
+    <div id="payStatePending">
+      <div class="pay-header">
+        <div class="pay-header-icon pulse-anim"><i class="fas fa-qrcode"></i></div>
+        <div class="pay-header-title">Scan QRIS Ini</div>
+        <div class="pay-header-sub">Waktu tersisa <b id="payCountdown">15:00</b></div>
+      </div>
+
+      <div class="pay-amount-box">
+        <div class="pay-amount-label">Total yang harus dibayar</div>
+        <div class="pay-amount-value" id="payAmountValue">Rp 3.000</div>
+        <div class="pay-badge" id="payStatusBadge"><span class="badge-dot"></span> Menunggu</div>
+      </div>
+
+      <div class="pay-detail-box">
+        <div class="pay-detail-row"><span>Produk</span><b id="payProductValue">1 akun</b></div>
+        <div class="pay-detail-row"><span>ID Pesanan</span><b id="payOrderId">—</b></div>
+      </div>
+
+      <div class="pay-qr-box"><img id="payQrisImg" class="pay-qr-img" alt="QRIS" /></div>
+
+      <div class="pay-status" id="payStatus">
+        <i class="fas fa-circle-notch fa-spin"></i> Mengecek pembayaran...
+      </div>
+
+      <button class="pay-cancel btn-3d-light" onclick="cancelPayModal()">
+        <i class="fas fa-xmark"></i> Batal Beli
+      </button>
+    </div>
+
+    <div id="payStateSuccess" style="display:none;">
+      <div class="pay-success-icon floating">
+        <i class="fas fa-face-smile-wink"></i>
+      </div>
+      <div class="pay-success-title">HORE! BERHASIL</div>
+      <div class="pay-success-sub">Pembayaran kamu sudah masuk dengan aman.</div>
+
+      <div class="pay-success-detail">
+        <div class="psd-row">
+          <span><i class="fas fa-wallet"></i> Total</span>
+          <b id="paySuccessHarga" class="highlight">Rp 3.000</b>
+        </div>
+        <div class="psd-row">
+          <span><i class="fas fa-box"></i> Item</span>
+          <b id="paySuccessProduk">1 akun (Email Pribadi)</b>
+        </div>
+        <div class="psd-row">
+          <span><i class="fas fa-receipt"></i> ID Pesanan</span>
+          <b id="paySuccessOrderId">—</b>
+        </div>
+      </div>
+
+      <div class="pay-success-note">
+        <i class="fas fa-stopwatch"></i>
+        <span>Sekarang buka Gmail kamu &amp; paste link-nya dalam <b>5 menit</b> ya!</span>
+      </div>
+
+      <button class="btn btn-primary btn-3d" onclick="closePayModal()" style="margin-top:16px;margin-bottom:0;">
+        <i class="fas fa-arrow-right"></i> Lanjut Verifikasi
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DONASI -->
+<div class="modal-backdrop" id="donateModal" onclick="if(event.target===this) closeDonate()">
+  <div class="modal-box confirm-box bounce-in">
+    <button class="modal-close" onclick="closeDonate()"><i class="fas fa-xmark"></i></button>
+    <div class="confirm-icon floating" style="background:#FF6B6B; color:white; border:none; box-shadow: 0 10px 20px rgba(255,107,107,0.3);">
+      <i class="fas fa-gift"></i>
+    </div>
+    <div class="confirm-title">Dukung Barikz Dev</div>
+    <div class="confirm-sub">Traktir kopi biar server tetap jalan!</div>
+    <img src="https://raw.githubusercontent.com/REY-CEO/REY-CEO/main/Image/1789649025010-image_1789649024920.jpg"
+         alt="QRIS Donasi" class="donate-qris" loading="lazy">
+    <div class="confirm-note" style="margin-top:16px; background:#FFE66D; border-color:#FFD166;">
+      <i class="fas fa-face-laugh-beam"></i>
+      <span>Berapapun nilainya, sangat berarti buat kami. Makasih!</span>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  function openDonate() { document.getElementById('donateModal')?.classList.add('show'); }
+  function closeDonate() { document.getElementById('donateModal')?.classList.remove('show'); }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDonate(); });
+</script>
+</body>
+</html>
