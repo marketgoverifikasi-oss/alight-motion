@@ -1,11 +1,9 @@
 {
   "version": 2,
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/$1" }
-  ],
+  "public": true,
   "functions": {
-    "api/*.js": {
-      "maxDuration": 10
+    "api/**/*.js": {
+      "maxDuration": 60
     }
   }
 }
