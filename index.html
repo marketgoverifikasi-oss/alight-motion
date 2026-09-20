@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Barikz Optima — Premium Generator</title>
+<meta name="theme-color" content="#ffffff">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Barikz Optima — AM Generator">
+<meta property="og:title" content="Barikz Optima — Alight Motion Premium 1 Tahun">
+<meta property="og:description" content="Aktivasi Alight Motion Premium 1 tahun via Barikz Optima. Proses otomatis & instan.">
+<meta property="og:image" content="https://raw.githubusercontent.com/REY-CEO/REY-CEO/main/Image/1789712904859-image_1789712904764.jpg">
+<meta property="og:url" content="https://am-rey-alight-motion-gamma.vercel.app">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader" class="loader">
+  <div class="loader-box">
+    <div class="loader-logo-wrap">
+      <div class="loader-logo-core">B</div>
+    </div>
+    <div class="loader-title">Barikz Optima</div>
+    <div class="loader-sub">SYSTEM INITIALIZATION</div>
+    <div class="loader-bar">
+      <div class="loader-bar-fill" id="loaderProgressFill"></div>
+    </div>
+    <div class="loader-status" id="loaderStatus">Memuat sistem...</div>
+  </div>
+</div>
+
+<div id="welcomeToast" class="welcome-toast">
+  <i class="fas fa-check"></i>
+  <div>
+    <div class="welcome-title" id="welcomeTitle">Selamat Datang</div>
+    <div class="welcome-desc" id="welcomeDesc">Sistem siap digunakan.</div>
+  </div>
+</div>
+
+<!-- SIDEBAR OVERLAY & MENU -->
+<div id="sidebarOverlay" class="sidebar-overlay" onclick="toggleSidebar()"></div>
+<div id="sidebar" class="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-brand">
+      <div class="sidebar-logo">B</div>
+      <h2>Barikz Optima</h2>
+    </div>
+    <button class="close-btn" onclick="toggleSidebar()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="sidebar-menu">
+    <div class="menu-label">Navigasi Utama</div>
+    <a href="#" id="nav-home" class="nav-link active" onclick="navTo('home')">
+      <i class="fas fa-home"></i> Beranda
+    </a>
+    <a href="#" id="nav-manual" class="nav-link" onclick="navTo('manual')">
+      <i class="fas fa-envelope"></i> AM Premium
+    </a>
+    <a href="#" id="nav-auto" class="nav-link" onclick="navTo('auto')">
+      <i class="fas fa-wand-magic-sparkles"></i> Auto / Bulk
+    </a>
+    <a href="#" id="nav-sewa" class="nav-link" onclick="navTo('sewa')">
+      <i class="fas fa-robot"></i> Sewa Bot
+    </a>
+  </div>
+  <div class="sidebar-footer">
+    <p>Version 3.0 — Clean UI</p>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <button class="action-btn menu-btn" onclick="toggleSidebar()" title="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="topbar-brand">
+      <h1>Barikz Optima</h1>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <a href="https://wa.me/6285196178998" target="_blank" class="action-btn" title="Hubungi Admin">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <button class="action-btn guide action-btn-text" onclick="openGuide()" title="Panduan">
+      <i class="fas fa-book-open"></i><span>Panduan</span>
+    </button>
+    <button class="action-btn donate action-btn-text" onclick="openDonate()" title="Donasi">
+      <i class="fas fa-heart"></i><span>Donasi</span>
+    </button>
+  </div>
+</div>
+
+<!-- TABS (HIDDEN) - Untuk menjaga fungsi JS asli tidak error -->
+<div class="tabs tabs-3" style="display:none;">
+  <button class="tab-btn active" id="tabManual" onclick="switchMode('manual')">Manual</button>
+  <button class="tab-btn" id="tabAuto" onclick="switchMode('auto')">Auto</button>
+  <button class="tab-btn" id="tabSewa" onclick="switchMode('sewa')">Sewa</button>
+</div>
+
+<!-- WRAPPER HALAMAN -->
+<div class="main-wrapper">
+
+  <!-- HALAMAN: BERANDA -->
+  <div id="pageHome" class="page-section active-page">
+    <div class="dashboard">
+      <div class="dash-item">
+        <div class="dash-icon"><i class="fas fa-clock"></i></div>
+        <div class="dash-body">
+          <div class="dash-label">Jam</div>
+          <div class="dash-value" id="dashTime">--:--:--</div>
+        </div>
+      </div>
+      <div class="dash-item">
+        <div class="dash-icon"><i class="fas fa-calendar-day"></i></div>
+        <div class="dash-body">
+          <div class="dash-label">Hari</div>
+          <div class="dash-value" id="dashDay">—</div>
+        </div>
+      </div>
+      <div class="dash-item">
+        <div class="dash-icon"><i class="fas fa-calendar-alt"></i></div>
+        <div class="dash-body">
+          <div class="dash-label">Tanggal</div>
+          <div class="dash-value" id="dashDate">—</div>
+        </div>
+      </div>
+      <div class="dash-item">
+        <div class="dash-icon"><i class="fas fa-calendar"></i></div>
+        <div class="dash-body">
+          <div class="dash-label">Tahun</div>
+          <div class="dash-value" id="dashYear">—</div>
+        </div>
+      </div>
+      <div class="dash-item dash-status" id="dashStatusItem">
+        <div class="dash-icon" id="dashStatusIcon"><i class="fas fa-wifi"></i></div>
+        <div class="dash-body">
+          <div class="dash-label">Status</div>
+          <div class="dash-value">
+            <span class="status-dot" id="dashDot"></span>
+            <span id="dashStatus">Online</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="hero-badge"><i class="fas fa-crown"></i> PREMIUM SERVICES</div>
+      <h2>Alight Motion <span>Premium & Bot</span></h2>
+      <p>
+        Selamat datang di pusat aktivasi otomatis Barikz Optima. 
+        Pilih menu di pojok kiri atas untuk memulai aktivasi Alight Motion Premium tanpa password, 
+        atau gunakan layanan sewa Bot WhatsApp instan kami.
+      </p>
+      <div class="hero-features">
+        <span><i class="fas fa-bolt"></i> Cepat & Instan</span>
+        <span><i class="fas fa-shield-halved"></i> 100% Aman</span>
+        <span><i class="fas fa-gem"></i> Full Akses</span>
+      </div>
+      <button class="btn btn-primary" style="margin-top:20px; max-width: 250px;" onclick="navTo('manual')">
+        Mulai Sekarang <i class="fas fa-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- HALAMAN: AM PREMIUM (MANUAL) -->
+  <div id="panelManual" class="page-section main-card" style="display:none;">
+    <div id="manualBuyState">
+      <div class="card-header">
+        <div class="card-icon"><i class="fas fa-envelope"></i></div>
+        <div style="flex:1;">
+          <div class="card-title">AM Premium Pribadi</div>
+          <div class="card-sub">Link aktifasi dikirim ke Gmail kamu</div>
+        </div>
+      </div>
+      <div class="message" id="msgBox"></div>
+      <label class="label">Alamat Gmail</label>
+      <input type="email" id="emailInput" class="input" placeholder="user@gmail.com" inputmode="email">
+      <div class="price-box">
+        <div class="price-row"><span><i class="fas fa-envelope"></i> Metode</span><b>Email Pribadi</b></div>
+        <div class="price-row"><span><i class="fas fa-clock"></i> Aktif</span><b>1 Tahun</b></div>
+        <div class="price-row price-total"><span>Total Bayar</span><b>Rp 3.000</b></div>
+      </div>
+      <button id="sendBtn" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Beli Sekarang Rp 3.000</button>
+      <div class="info-note"><i class="fas fa-circle-info"></i><div><b>Alur:</b> Bayar <b>Rp 3.000</b> via QRIS → magic link dikirim ke Gmail → paste link dalam <b>5 menit</b> → premium aktif.</div></div>
+    </div>
+    
+    <!-- Bagian Verifikasi -->
+    <div id="verifSection" style="display:none;">
+      <div class="paid-success-banner">
+        <div class="psb-icon"><i class="fas fa-check"></i></div>
+        <div><div class="psb-title">Pembayaran Lunas</div><div class="psb-desc">Cek inbox email: <b id="verifEmailDisplay">email kamu</b></div></div>
+      </div>
+      <div class="verif-timer" id="verifTimer">
+        <i class="fas fa-hourglass-half"></i>
+        <div><div class="verif-timer-label">Sisa waktu verifikasi</div><div class="verif-timer-value" id="verifCountdown">05:00</div></div>
+      </div>
+      <div class="card-header" style="margin-top:20px;">
+        <div class="card-icon"><i class="fas fa-link"></i></div>
+        <div style="flex:1;"><div class="card-title">Paste Magic Link</div><div class="card-sub">Copy dari Gmail, paste di bawah</div></div>
+      </div>
+      <ol class="verif-steps">
+        <li>Buka aplikasi <b>Gmail</b></li>
+        <li>Cari email dari <b>Alight Motion</b></li>
+        <li><b>Copy</b> link aktivasinya</li>
+        <li><b>Paste</b> di kotak berikut</li>
+      </ol>
+      <div class="message" id="msgBox2"></div>
+      <label class="label">Link dari Email</label>
+      <textarea id="magicInput" class="input" placeholder="Paste link di sini..." rows="3"></textarea>
+      <button id="activateBtn" class="btn btn-dark" disabled><i class="fas fa-shield-halved"></i> <span id="btnText">Verifikasi &amp; Aktifkan</span></button>
+      <a href="https://mail.google.com" target="_blank" class="gmail-btn"><i class="fab fa-google"></i> Buka Gmail Sekarang</a>
+      <button id="verifExpiredBtn" class="btn btn-light" style="display:none;margin-top:10px;"><i class="fas fa-rotate-right"></i> Beli Lagi</button>
+    </div>
+
+    <!-- Berhasil -->
+    <div id="verifSuccess" class="success-card" style="display:none;">
+      <div class="success-icon"><i class="fas fa-check"></i></div>
+      <div class="success-title">Premium Aktif</div>
+      <div class="success-desc">Akun <b id="vsEmail">-</b> sudah jadi <b>Alight Motion Premium</b>. Buka aplikasinya, login pakai email tersebut.</div>
+      <button class="btn btn-primary" onclick="resetVerifForm()"><i class="fas fa-check"></i> Selesai</button>
+    </div>
+  </div>
+
+  <!-- HALAMAN: AUTO/BULK -->
+  <div id="panelAuto" class="page-section main-card" style="display:none;">
+    <div class="card-header">
+      <div class="card-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+      <div style="flex:1;">
+        <div class="card-title">Auto Generate Email</div>
+        <div class="card-sub">Sistem bikin akun otomatis</div>
+      </div>
+    </div>
+    <div class="message" id="msgBoxPaid"></div>
+    <label class="label">Jumlah Akun (1 – 20)</label>
+    <div class="qty-control">
+      <button class="qty-btn" onclick="changePaidQty(-1)">−</button>
+      <input type="number" id="paidCount" class="qty-input" value="1" min="1" max="20" inputmode="numeric">
+      <button class="qty-btn" onclick="changePaidQty(1)">+</button>
+    </div>
+    <label class="label">Domain Email</label>
+    <select id="paidDomainSelect" class="input">
+      <option value="gmail.com">gmail.com</option>
+      <option value="googlemail.com">googlemail.com</option>
+    </select>
+    <div class="price-box">
+      <div class="price-row"><span><i class="fas fa-tag"></i> Harga / akun</span><b>Rp 5.000</b></div>
+      <div class="price-row"><span><i class="fas fa-hashtag"></i> Jumlah</span><b id="paidQtyDisplay">1</b></div>
+      <div class="price-row price-total"><span>Total Bayar</span><b id="paidTotalDisplay">Rp 5.000</b></div>
+    </div>
+    <button id="paidPayBtn" class="btn btn-primary"><i class="fas fa-shopping-cart"></i> Beli <span id="paidBtnQty">1</span> Akun</button>
+    <div class="info-note"><i class="fas fa-circle-info"></i><div><b>Alur:</b> Bayar via QRIS → akun otomatis digenerate → langsung siap dipakai.</div></div>
+
+    <div id="paidProgress" style="display:none;margin-top:24px;padding-top:20px;border-top:1px solid #e5e5e5;">
+      <div class="section-title">HASIL AKUN</div>
+      <div class="summary" id="paidSummary">Menunggu pembayaran...</div>
+      <div id="paidList"></div>
+      <div id="paidActions" class="actions-row">
+        <button class="btn btn-light" onclick="copyAllPaidEmails()"><i class="fas fa-copy"></i> Salin Semua</button>
+        <button class="btn btn-dark" onclick="downloadPaidTxt()"><i class="fas fa-download"></i> Download TXT</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- HALAMAN: SEWA BOT -->
+  <div id="panelSewa" class="page-section main-card" style="display:none;">
+    <div class="card-header">
+      <div class="card-icon"><i class="fas fa-robot"></i></div>
+      <div style="flex:1;">
+        <div class="card-title">Sewa Bot WhatsApp</div>
+        <div class="card-sub">Bot langsung masuk grup, aktif otomatis</div>
+      </div>
+    </div>
+    <div class="message" id="msgBoxSewa"></div>
+    <div class="sewa-cats" id="sewaCats">
+      <button class="sewa-cat active" data-cat="NEW" onclick="changeSewaCategory('NEW')">
+        <i class="fas fa-plus"></i><div><b>Baru</b><span>Bot baru</span></div>
+      </button>
+      <button class="sewa-cat" data-cat="RENEW" onclick="changeSewaCategory('RENEW')">
+        <i class="fas fa-rotate-right"></i><div><b>Perpanjang</b><span>Lanjut sewa</span></div>
+      </button>
+      <button class="sewa-cat" data-cat="PREMIUM" onclick="changeSewaCategory('PREMIUM')">
+        <i class="fas fa-star"></i><div><b>Premium</b><span>Upgrade</span></div>
+      </button>
+    </div>
+    <div id="sewaLinkWrap">
+      <label class="label">Link Grup WhatsApp</label>
+      <input type="text" id="sewaGroupLink" class="input" placeholder="https://chat.whatsapp.com/..." inputmode="url">
+    </div>
+    <div id="sewaTargetWrap" style="display:none;">
+      <label class="label">Nomor WhatsApp Target</label>
+      <input type="text" id="sewaTargetNumber" class="input" placeholder="628xxxxxxxxxx" inputmode="tel">
+    </div>
+    <label class="label">Pilih Paket Durasi</label>
+    <div class="sewa-grid" id="sewaGrid"></div>
+    <div id="sewaBonusWrap" style="display:none;">
+      <label class="label">Nomor Premium Bonus <span id="sewaBonusCount" class="label-count">(maks 0)</span></label>
+      <div class="sewa-hint"><i class="fas fa-info-circle"></i><span>Wajib pakai <b>62</b> di depan. Jangan pakai 08.</span></div>
+      <div id="sewaBonusFields"></div>
+    </div>
+    <div class="sewa-selected" id="sewaSelected" style="display:none;">
+      <div class="sewa-selected-row"><span><i class="fas fa-box"></i> Paket</span><b id="sewaSelectedName">-</b></div>
+      <div class="sewa-selected-row" id="sewaBonusRow" style="display:none;"><span><i class="fas fa-gift"></i> Bonus</span><b id="sewaSelectedBonus">-</b></div>
+      <div class="sewa-selected-row sewa-total"><span>Total Bayar</span><b id="sewaSelectedPrice">Rp 0</b></div>
+    </div>
+    <button id="sewaPayBtn" class="btn btn-primary" disabled><i class="fas fa-check"></i> Pilih Paket Dulu</button>
+    <div class="info-note"><i class="fas fa-circle-info"></i><div><b>Alur:</b> Bayar via QRIS → proses otomatis → notif via Telegram.</div></div>
+    <div class="sewa-list-section">
+      <button class="sewa-list-toggle" onclick="toggleSewaList()">
+        <i class="fas fa-list"></i><span>List Grup Sewa</span><i class="fas fa-chevron-down toggle-icon" id="sewaListToggleIcon"></i>
+      </button>
+      <div class="sewa-list-box" id="sewaListBox" style="display:none;"><div id="sewaListContent"></div></div>
+    </div>
+  </div>
+
+</div> <!-- End Main Wrapper -->
+
+<div class="terminal">
+  <div class="term-head">
+    <span class="term-title"><i class="fas fa-terminal"></i> system.log</span>
+    <div class="term-actions">
+      <button class="term-btn" onclick="copyTerminal()" title="Copy Log"><i class="fas fa-copy"></i></button>
+      <button class="term-btn" onclick="clearTerminal()" title="Clear Log"><i class="fas fa-trash"></i></button>
+      <span class="term-live"><span class="live-dot"></span>Live</span>
+    </div>
+  </div>
+  <div id="terminalLog">
+    <div class="log-line log-info">System initialized successfully. Ready to process.</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-brand">BARIKZ OPTIMA INC.</div>
+  <div class="footer-sub">Crafted with precision in Indonesia</div>
+</div>
+
+<!-- MODAL KONFIRMASI -->
+<div class="modal-backdrop" id="confirmModal" onclick="if(event.target===this) closeConfirmModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeConfirmModal()"><i class="fas fa-times"></i></button>
+    <div class="confirm-icon"><i class="fas fa-shopping-bag"></i></div>
+    <div class="confirm-title">Konfirmasi Pembelian</div>
+    <div class="confirm-sub">Periksa kembali detail pesanan Anda</div>
+    <div class="confirm-detail">
+      <div class="confirm-row"><span><i class="fas fa-box"></i> Produk</span><b id="confirmProduct">AM Premium</b></div>
+      <div class="confirm-row"><span><i class="fas fa-hashtag"></i> Jumlah</span><b id="confirmQty">1 akun</b></div>
+      <div class="confirm-row confirm-total"><span>Total Bayar</span><b id="confirmTotal">Rp 3.000</b></div>
+    </div>
+    <div class="confirm-note"><i class="fas fa-clock"></i><span>QRIS berlaku <b>15 menit</b>. Setelah lunas, sistem diproses otomatis.</span></div>
+    <div class="confirm-actions">
+      <button class="btn btn-light" onclick="closeConfirmModal()">Batal</button>
+      <button class="btn btn-primary" id="confirmPayBtn"><i class="fas fa-check"></i> Ya, Bayar</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL QRIS -->
+<div class="modal-backdrop" id="payModal" onclick="if(event.target===this) closePayModal()">
+  <div class="modal-box pay-box">
+    <button class="modal-close" onclick="closePayModal()"><i class="fas fa-times"></i></button>
+    <div id="payStatePending">
+      <div class="pay-header">
+        <div class="pay-header-icon"><i class="fas fa-qrcode"></i></div>
+        <div class="pay-header-title">Scan QRIS</div>
+        <div class="pay-header-sub">Bayar dalam <b id="payCountdown">15:00</b></div>
+      </div>
+      <div class="pay-amount-box">
+        <div class="pay-amount-label">Total Pembayaran</div>
+        <div class="pay-amount-value" id="payAmountValue">Rp 3.000</div>
+        <div class="pay-badge" id="payStatusBadge"><span class="badge-dot"></span> Pending</div>
+      </div>
+      <div class="pay-detail-box">
+        <div class="pay-detail-row"><span>Product</span><b id="payProductValue">1 akun</b></div>
+        <div class="pay-detail-row"><span>Order ID</span><b id="payOrderId">—</b></div>
+      </div>
+      <div class="pay-qr-box"><img id="payQrisImg" class="pay-qr-img" alt="QRIS" /></div>
+      <div class="pay-status" id="payStatus"><i class="fas fa-spinner fa-spin"></i> Menunggu pembayaran...</div>
+      <button class="pay-cancel" onclick="cancelPayModal()"><i class="fas fa-times"></i> Batalkan Pembayaran</button>
+    </div>
+    
+    <div id="payStateSuccess" style="display:none;">
+      <div class="pay-success-icon"><i class="fas fa-check"></i></div>
+      <div class="pay-success-title">Pembayaran Berhasil</div>
+      <div class="pay-success-sub">Terima kasih, dana telah kami terima.</div>
+      <div class="pay-success-detail">
+        <div class="psd-row"><span><i class="fas fa-tag"></i> Harga</span><b id="paySuccessHarga">Rp 3.000</b></div>
+        <div class="psd-row"><span><i class="fas fa-box"></i> Produk</span><b id="paySuccessProduk">1 akun</b></div>
+        <div class="psd-row"><span><i class="fas fa-receipt"></i> Order ID</span><b id="paySuccessOrderId">—</b></div>
+      </div>
+      <div class="pay-success-note" id="paySuccessNote"><i class="fas fa-hourglass-half"></i><span>Buka Gmail &amp; paste magic link dalam <b>5 menit</b></span></div>
+      <button class="btn btn-primary" onclick="closePayModal()"><i class="fas fa-arrow-right"></i> Lanjut Verifikasi</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CANCEL -->
+<div class="modal-backdrop" id="cancelModal" onclick="if(event.target===this) closeCancelModal()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeCancelModal()"><i class="fas fa-times"></i></button>
+    <div class="cancel-icon"><i class="fas fa-times"></i></div>
+    <div class="cancel-title">Dibatalkan</div>
+    <div class="cancel-sub">Kamu membatalkan proses pembayaran ini.</div>
+    <div class="cancel-info"><i class="fas fa-info-circle"></i><span>Kamu bisa coba lagi kapan pun. <b>Tidak ada biaya</b> yang terpotong.</span></div>
+    <div class="cancel-actions">
+      <button class="btn btn-light" onclick="closeCancelModal()">Tutup</button>
+      <button class="btn btn-dark" onclick="retryFromCancel()">Coba Lagi</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL DONASI -->
+<div class="modal-backdrop" id="donateModal" onclick="if(event.target===this) closeDonate()">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDonate()"><i class="fas fa-times"></i></button>
+    <div class="donate-heart-icon"><i class="fas fa-heart"></i></div>
+    <div class="donate-title">Dukung Barikz Optima</div>
+    <div class="donate-sub">Bantu sistem ini tetap online dan bebas biaya langganan.</div>
+    <div class="donate-input-wrap">
+      <span class="donate-prefix">Rp</span>
+      <input type="text" id="donateAmount" class="donate-input" placeholder="Min. 1.000" inputmode="numeric" autocomplete="off">
+    </div>
+    <div class="donate-quick">
+      <button class="donate-quick-btn" onclick="setDonateAmount(1000)">1rb</button>
+      <button class="donate-quick-btn" onclick="setDonateAmount(5000)">5rb</button>
+      <button class="donate-quick-btn" onclick="setDonateAmount(10000)">10rb</button>
+      <button class="donate-quick-btn" onclick="setDonateAmount(20000)">20rb</button>
+      <button class="donate-quick-btn" onclick="setDonateAmount(50000)">50rb</button>
+      <button class="donate-quick-btn" onclick="setDonateAmount(100000)">100rb</button>
+    </div>
+    <div class="message" id="msgBoxDonate"></div>
+    <button id="donatePayBtn" class="btn btn-primary"><i class="fas fa-heart"></i> Donasi Sekarang</button>
+  </div>
+</div>
+
+<!-- MODAL PANDUAN -->
+<div class="modal-backdrop" id="guideModal" onclick="if(event.target===this) closeGuide()">
+  <div class="modal-box" style="max-width: 460px; text-align:left;">
+    <button class="modal-close" onclick="closeGuide()"><i class="fas fa-times"></i></button>
+    <div class="guide-title" id="guideTitle">Pusat Bantuan</div>
+    <div class="guide-sub" id="guideSubtitle">Pilih kategori panduan</div>
+    <div class="guide-tabs" id="guideTabs">
+      <button class="guide-tab active" data-tab="manual" onclick="switchGuideTab('manual')">AM Prem</button>
+      <button class="guide-tab" data-tab="auto" onclick="switchGuideTab('auto')">Auto</button>
+      <button class="guide-tab" data-tab="sewa" onclick="switchGuideTab('sewa')">Sewa Bot</button>
+      <button class="guide-tab" data-tab="verif" onclick="switchGuideTab('verif')">Verifikasi</button>
+    </div>
+    <div class="guide-content" id="guideContent"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  // Script Khusus untuk Navigasi Sidebar dan Efek Smooth
+  function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('show');
+  }
+
+  function navTo(page) {
+    // Sembunyikan semua halaman
+    document.getElementById('pageHome').style.display = 'none';
+    document.getElementById('panelManual').style.display = 'none';
+    document.getElementById('panelAuto').style.display = 'none';
+    document.getElementById('panelSewa').style.display = 'none';
+
+    // Update Navigasi Aktif
+    document.querySelectorAll('.sidebar-menu .nav-link').forEach(el => el.classList.remove('active'));
+    document.getElementById('nav-' + page).classList.add('active');
+
+    // Tampilkan Halaman Tujuan & Trigger JS aslinya
+    if (page === 'home') {
+      let home = document.getElementById('pageHome');
+      home.style.display = 'block';
+      home.style.animation = 'none';
+      home.offsetHeight; // trigger reflow
+      home.style.animation = 'fadeUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+    } else {
+      if(typeof switchMode === 'function') {
+        switchMode(page); // Memanggil script.js bawaan kamu
+      }
+      let panel = document.getElementById('panel' + page.charAt(0).toUpperCase() + page.slice(1));
+      panel.style.display = 'block';
+      panel.style.animation = 'none';
+      panel.offsetHeight; // trigger reflow
+      panel.style.animation = 'fadeUp 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards';
+    }
+    
+    // Tutup Sidebar
+    if (document.getElementById('sidebar').classList.contains('open')) {
+      toggleSidebar();
+    }
+  }
+
+  // Modals Donasi
+  function openDonate() { document.getElementById('donateModal')?.classList.add('show'); }
+  function closeDonate() { document.getElementById('donateModal')?.classList.remove('show'); }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeDonate();
+      if (typeof closeGuide === 'function') closeGuide();
+    }
+  });
+
+  // Default saat web dimuat
+  window.addEventListener('DOMContentLoaded', () => {
+    navTo('home'); // Tampilkan Beranda pertama kali
+  });
+</script>
+</body>
+</html>
